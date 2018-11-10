@@ -1,5 +1,5 @@
-import { Token, Identifier } from "../Token";
-import { BrsType, Argument, ValueKind } from "../brsTypes";
+import { Token } from "../Token";
+import { BrsType, Argument, ValueKind, BrsString } from "../brsTypes";
 import { Block } from "./Statement";
 import { Lexeme } from "../Lexeme";
 
@@ -126,12 +126,12 @@ export class ArrayLiteral implements Expression {
 }
 
 /** A member of an associative array literal. */
-type AAMember = {
+export interface AAMember {
     /** The name of the member. */
-    name: Identifier,
+    name: BrsString,
     /** The expression evaluated to determine the member's initial value. */
     value: Expression
-};
+}
 
 export class AALiteral implements Expression {
     constructor(readonly elements: AAMember[]) {}

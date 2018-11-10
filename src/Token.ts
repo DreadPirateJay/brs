@@ -15,13 +15,3 @@ export interface Token {
     /** The line on which this token was found. */
     line: number;
 }
-
-/** A specific Token kind that represents an identifier. */
-export interface Identifier extends Token {
-    kind: Lexeme.Identifier
-    text: string;
-}
-
-export function isIdentifier(token: Token): token is Identifier {
-    return token.kind === Lexeme.Identifier;
-}
