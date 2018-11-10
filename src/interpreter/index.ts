@@ -734,6 +734,12 @@ export class Interpreter implements Expr.Visitor<BrsType>, Stmt.Visitor<BrsType>
         );
     }
 
+    visitAALiteral(expression: Expr.AALiteral): BrsType {
+        console.error("Associative-array literals aren't supported yet");
+
+        return BrsInvalid.Instance;
+    }
+
     visitLogical(expression: Expr.Logical) {
         return BrsInvalid.Instance;
     }

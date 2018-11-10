@@ -644,6 +644,10 @@ function primary(): Expression {
 
             //consume("Expected newline or ':' after array literal", Lexeme.Newline, Lexeme.Colon, Lexeme.Eof);
             return new Expr.ArrayLiteral(elements);
+        case match(Lexeme.LeftBrace):
+            // TODO: parse associative array internals
+            consume("Unmatched '}' - expected '}' after associative array literal", Lexeme.RightBrace);
+            return new Expr.AALiteral([]);
         case match(Lexeme.Pos, Lexeme.Tab):
             let token = Object.assign(previous(), { kind: Lexeme.Identifier });
             return new Expr.Variable(token);
